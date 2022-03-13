@@ -3,10 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-model_list = ['random_model', 'boarding_by_section', "boarding_by_section (10% disobey)", 'boarding_by_seat',
-              "boarding_by_seat (10% disobey)", 'back_to_front', 'steffen_method', 'random_model (30% capacity)',
-              'random_model (50% capacity)', 'random_model (70% capacity)', 'back_to_front (30% capacity)',
-              'back_to_front (50% capacity)', 'back_to_front (70% capacity)']
+model_list = ['random_model', 'boarding_by_section', 'boarding_by_seat', 'back_to_front', 'steffen_method']
 
 iterations = 1000
 
@@ -20,8 +17,10 @@ for x in range(len(data_files)):
 
     ax = sns.kdeplot(recorded_time, label=model_list[x], shade=True, thresh=False)
     plt.axvline(recorded_time.mean(), color='red')
+    trans = ax.get_xaxis_transform()
+    ax.text(recorded_time.mean() - 25, 0.5, f'{recorded_time.mean():.2f}s', rotation=90, transform=trans)
 
-plt.xlabel('Time (s)')
-plt.ylabel('Probability')
+plt.xlabel('Time (in seconds)')
+plt.ylabel('Probability (no. occurrences)')
 plt.legend(loc='upper right')
 plt.show()
