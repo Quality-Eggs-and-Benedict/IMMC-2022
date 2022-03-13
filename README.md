@@ -5,11 +5,11 @@ The `IMMC_main_model.cpp` file is the main entry point, where you can select a m
 
 ## Create Graphs
 ### KDE Plot
-![KDE Plot Image](https://github.com/garv-shah/IMMC-2022/blob/main/images/kde_plot.png?raw=true)
+![KDE Plot Image](https://github.com/garv-shah/IMMC-2022/blob/main/images/kde_plot.png?raw=true) <br>
 To generate a KDE plot, you can use the `generate_graph.py` python script. This takes the `data_output.csv` file and generates a graph.
 
 ### Bar Plot
-![Bar Plot Image](https://github.com/garv-shah/IMMC-2022/blob/main/images/bar_plot.png?raw=true)
+![Bar Plot Image](https://github.com/garv-shah/IMMC-2022/blob/main/images/bar_plot.png?raw=true) <br>
 To generate a bar plot, you can use the `generate_bar_graph.py` python script. This the csv files in `model_outputs` and creates a graph combining all of their values for comparison.
 There are a few variables you might have to edit if you want to add more models or alter the number of iterations in this file. By default they are:
 
