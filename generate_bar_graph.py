@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 model_list = ['random_model', 'boarding_by_section', "boarding_by_section (10% disobey)", 'boarding_by_seat',
-              "boarding_by_seat (10% disobey)", 'back_to_front']
+              "boarding_by_seat (10% disobey)", 'back_to_front', 'steffen_method']
 iterations = 1000
 
 data_files = [pd.read_csv(f"./model_outputs/{model_name}.csv") for model_name in model_list]
