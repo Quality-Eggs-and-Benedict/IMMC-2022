@@ -10,7 +10,13 @@
 //#include "models/IMMC_boarding_by_seat_people_not_following_order_testing.cpp"
 //#include "models/IMMC_boarding_by_section_people_not_following_order_testing.cpp"
 //#include "models/IMMC_back_to_front_testing.cpp"
-#include "models/IMMC_steffen_model_testing.cpp"
+//#include "models/IMMC_steffen_model_testing.cpp"
+//#include "models/IMMC_random_model_30_capacity.cpp"
+//#include "models/IMMC_random_model_50_capacity.cpp"
+//#include "models/IMMC_random_model_70_capacity.cpp"
+//#include "models/IMMC_back_to_front_30_capacity.cpp"
+//#include "models/IMMC_back_to_front_50_capacity.cpp"
+#include "models/IMMC_back_to_front_70_capacity.cpp"
 
 //Change which file above is included to test different models
 
