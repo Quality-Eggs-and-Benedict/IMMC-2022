@@ -17,7 +17,7 @@ int store_time[34];
 
 vector<pair<pair<int, int>, int> > passengers; //first: row, column, second: number of baggages
 
-vector<pair<pair<int, int>, int>> aft_section, middle_section, bow_section;
+vector<pair<pair<int, int>, int>> AF_section, BE_section, CD_section;
 
 
 void next_second() {
@@ -87,85 +87,93 @@ int runModel(default_random_engine rng) {
     memset(simulating_aisle, 0, sizeof(simulating_aisle));
     memset(store_time, 0, sizeof(store_time));
     passengers.clear();
-    aft_section.clear();
-    middle_section.clear();
-    bow_section.clear();
+    AF_section.clear();
+    BE_section.clear();
+    CD_section.clear();
 
-
-    int max_time = 0;
-    for (int k = 1; k <= 3; k++) {
-
+    for (int i = 1; i <= 33; i++) { //random boarding order for people in seat A
         int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
         int total_time = 0;
         for (int i = 1; i <= baggage_num; i++) {
 
-            total_time += rand() % 11 + 5; //assumption: every baggage will cost 5-15 seconds to be placed
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
             //printf("%d\n",cost);
         }
-        airplane[1][k] = total_time;
-        bow_section.push_back(make_pair(make_pair(1, k), total_time));
-        max_time = max(max_time, total_time);
-
+        AF_section.push_back(make_pair(make_pair(i, 1), total_time));
     }
 
-    for (int i = 2; i <= 11; i++) { //from row 2 to end
-        for (int k = 1; k <= 6; k++) {
-            int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 6
-            int total_time = 0;
-            for (int j = 1; j <= baggage_num; j++) {
+    for (int i = 2; i <= 33; i++) { //random boarding order for people in seat F
+        int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
+        int total_time = 0;
+        for (int i = 1; i <= baggage_num; i++) {
 
-                total_time += rand() % 11 + 5; //assumption: every baggage will cost 5-15 seconds to be placed
-                //printf("%d\n",cost);
-            }
-            airplane[i][k] = total_time;
-            bow_section.push_back(make_pair(make_pair(i, k), total_time));
-            max_time = max(max_time, total_time);
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
+            //printf("%d\n",cost);
         }
+        AF_section.push_back(make_pair(make_pair(i, 6), total_time));
     }
-    shuffle(bow_section.begin(), bow_section.end(), rng);
 
+    shuffle(AF_section.begin(), AF_section.end(), rng);
 
-    for (int i = 12; i <= 22; i++) { //from row 2 to end
-        for (int k = 1; k <= 6; k++) {
-            int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 6
-            int total_time = 0;
-            for (int j = 1; j <= baggage_num; j++) {
+    for (int i = 1; i <= 33; i++) { //random boarding order for people in seat B
+        int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
+        int total_time = 0;
+        for (int i = 1; i <= baggage_num; i++) {
 
-                total_time += rand() % 11 + 5; //assumption: every baggage will cost 5-15 seconds to be placed
-                //printf("%d\n",cost);
-            }
-            airplane[i][k] = total_time;
-            middle_section.push_back(make_pair(make_pair(i, k), total_time));
-            max_time = max(max_time, total_time);
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
+            //printf("%d\n",cost);
         }
+        BE_section.push_back(make_pair(make_pair(i, 2), total_time));
     }
-    shuffle(middle_section.begin(), middle_section.end(), rng);
 
-    for (int i = 23; i <= 33; i++) { //from row 2 to end
-        for (int k = 1; k <= 6; k++) {
-            int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 6
-            int total_time = 0;
-            for (int j = 1; j <= baggage_num; j++) {
+    for (int i = 2; i <= 33; i++) { //random boarding order for people in seat E
+        int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
+        int total_time = 0;
+        for (int i = 1; i <= baggage_num; i++) {
 
-                total_time += rand() % 11 + 5; //assumption: every baggage will cost 5-15 seconds to be placed
-                //printf("%d\n",cost);
-            }
-            airplane[i][k] = total_time;
-            aft_section.push_back(make_pair(make_pair(i, k), total_time));
-            max_time = max(max_time, total_time);
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
+            //printf("%d\n",cost);
         }
-    }
-    shuffle(aft_section.begin(), aft_section.end(), rng);
-
-    for (int i = 0; i < aft_section.size(); i++) {
-        passengers.push_back(aft_section[i]);
-    }
-    for (int i = 0; i < middle_section.size(); i++) {
-        passengers.push_back(middle_section[i]);
+        BE_section.push_back(make_pair(make_pair(i, 5), total_time));
     }
 
-    for (int i = 0; i < bow_section.size(); i++) {
-        passengers.push_back(bow_section[i]);
+    shuffle(BE_section.begin(), BE_section.end(), rng);
+
+    for (int i = 1; i <= 33; i++) { //random boarding order for people in seat C
+        int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
+        int total_time = 0;
+        for (int i = 1; i <= baggage_num; i++) {
+
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
+            //printf("%d\n",cost);
+        }
+        CD_section.push_back(make_pair(make_pair(i, 3), total_time));
+    }
+
+
+    for (int i = 2; i <= 33; i++) { //random boarding order for people in seat D
+        int baggage_num = rand() % 4; //assumption: every passenger will have a random number of baggage from 0 to 3
+        int total_time = 0;
+        for (int i = 1; i <= baggage_num; i++) {
+
+            total_time += rand() % 11 + 5;; //assumption: every baggage will cost 5-15 seconds to be placed
+            //printf("%d\n",cost);
+        }
+        CD_section.push_back(make_pair(make_pair(i, 4), total_time));
+    }
+
+    shuffle(CD_section.begin(), CD_section.end(), rng);
+
+    for (int i = 0; i < AF_section.size(); i++) {
+        passengers.push_back(AF_section[i]);
+    }
+
+    for (int i = 0; i < BE_section.size(); i++) {
+        passengers.push_back(BE_section[i]);
+    }
+
+    for (int i = 0; i < CD_section.size(); i++) {
+        passengers.push_back(CD_section[i]);
     }
 
 
