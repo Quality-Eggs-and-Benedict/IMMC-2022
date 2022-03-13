@@ -6,6 +6,8 @@
 
 using namespace std;
 
+string csv = "boarding_by_section.csv";
+
 int airplane[34][7]; //for each row, 1st index is A, 2nd index is B, 3rd index is C, 4th index is D,
 //5th index is E, 6th index is F
 int board[34][7];
