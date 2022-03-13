@@ -4,9 +4,11 @@
 
 #include <fstream>
 #include <iostream>
-#include "models/IMMC_random_model_testing.cpp"
+//#include "models/IMMC_random_model_testing.cpp"
 //#include "models/IMMC_boarding_by_section_testing.cpp"
 //#include "models/IMMC_boarding_by_seat_testing.cpp"
+//#include "models/IMMC_boarding_by_seat_people_not_following_order_testing.cpp"
+#include "models/IMMC_boarding_by_section_people_not_following_order_testing.cpp"
 
 //Change which file above is included to test different models
 
